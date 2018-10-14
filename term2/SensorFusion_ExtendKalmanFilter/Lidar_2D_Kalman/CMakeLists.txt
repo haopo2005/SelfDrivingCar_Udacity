@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 2.8)
+project(LidarKalman)
+SET(CMAKE_C_COMPILER g++)
+SET(CMAKE_BUILD_TYPE "Debug") 
+SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+add_compile_options(-std=c++11)
+
+set(INC_LOCAL_DIR  /home/jst/share/project/udacity/code/kf_sensor_fusion/Eigen ${LidarKalman_SOURCE_DIR})  
+AUX_SOURCE_DIRECTORY(${LidarKalman_SOURCE_DIR} SOURCE_FILES)
+include_directories(${INC_LOCAL_DIR}) 
+add_executable( LidarKalman ${SOURCE_FILES})
+target_link_libraries( LidarKalman ${OpenCV_LIBS})
